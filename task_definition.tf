@@ -15,7 +15,7 @@ resource "aws_ecs_task_definition" "service" {
   family                = "${var.service_name}"
   container_definitions = data.template_file.service.rendered
 
-  requires_compatibilities = "FARGATE"
+  requires_compatibilities = ["FARGATE"]
   network_mode = var.service_task_network_mode
   pid_mode     = var.service_task_pid_mode
 
