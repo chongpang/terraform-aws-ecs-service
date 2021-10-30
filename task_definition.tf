@@ -23,7 +23,6 @@ resource "aws_ecs_task_definition" "service" {
   requires_compatibilities = ["FARGATE"]
   network_mode = var.service_task_network_mode
   pid_mode     = var.service_task_pid_mode
-  cpu = 
   task_role_arn = var.service_role
   execution_role_arn = data.aws_iam_role.ecs_task_execution_role.arn
   dynamic "volume" {
