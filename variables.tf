@@ -211,3 +211,13 @@ variable "force_new_deployment" {
   type        = string
   default     = "no"
 }
+
+variable "fargate_cpu" {
+  type        = number
+  default     = 256
+}
+
+variable "fargate_memory" {
+  type        = number
+  default     = 512
+}
