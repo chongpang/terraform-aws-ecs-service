@@ -1,12 +1,12 @@
 resource "aws_security_group" "task" {
   count = (var.associate_default_security_group == "yes" && var.service_task_network_mode == "awsvpc") ? 1 : 0
 
-  name        = "${var.deployment_identifier}-${var.service_name}"
+  name        = var.service_name
   description = "Container access for deployment: ${var.deployment_identifier}, service: ${var.service_name}"
   vpc_id      = var.vpc_id
 
   tags = {
-    Name                 = "${var.deployment_identifier}-${var.service_name}"
+    Name                 = var.service_name
     DeploymentIdentifier = var.deployment_identifier
     ServiceName          = var.service_name
   }
