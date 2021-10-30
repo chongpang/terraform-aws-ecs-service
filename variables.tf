@@ -12,10 +12,6 @@ variable "subnet_ids" {
   default     = []
 }
 
-variable "component" {
-  description = "The component this service will contain."
-  type        = string
-}
 variable "deployment_identifier" {
   description = "An identifier for this instantiation."
   type        = string
