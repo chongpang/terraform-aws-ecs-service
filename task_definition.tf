@@ -11,6 +11,10 @@ data "template_file" "service" {
   }
 }
 
+data "aws_iam_role" "ecs_task_execution_role" {
+  name = "ecsTaskExecutionRole"
+}
+
 resource "aws_ecs_task_definition" "service" {
   family                = "${var.service_name}"
   container_definitions = data.template_file.service.rendered
@@ -20,7 +24,7 @@ resource "aws_ecs_task_definition" "service" {
   pid_mode     = var.service_task_pid_mode
 
   task_role_arn = var.service_role
-
+  execution_role_arn  = "${data.aws_iam_role.ecs_task_execution_role.arn}
   dynamic "volume" {
     for_each = var.service_volumes
     content {
